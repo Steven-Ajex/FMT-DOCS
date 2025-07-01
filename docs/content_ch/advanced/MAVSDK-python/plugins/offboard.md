@@ -50,12 +50,6 @@ async def run():
             print("-- Connected")
             break
 
-    print("Waiting for global position estimate...")
-    async for health in drone.telemetry.health():
-        if health.is_global_position_ok and health.is_home_position_ok:
-            print("-- Position estimate OK")
-            break
-
     print("set position update rate")
     await drone.telemetry.set_rate_position(1.0)
 
